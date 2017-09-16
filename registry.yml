@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+
+  main:
+    image: registry
+    ports:
+      - 5000:5000
+    volumes:
+      - registry:/var/lib/registry
+    deploy:
+      resources:
+        reservations:
+          memory: 100M
+        limits:
+          memory: 200M
+
+volumes:
+
+  registry:
+    driver: cloudstor:aws
+    external: false
