@@ -1,1 +1,0 @@
-docker volume create --driver rexray --opt size=100 registry
