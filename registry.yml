@@ -4,10 +4,10 @@ services:
 
   main:
     image: registry
-    ports:
-      - 5000:5000
     volumes:
       - registry:/var/lib/registry
+    networks:
+      - registry
     deploy:
       resources:
         reservations:
@@ -20,4 +20,8 @@ volumes:
   registry:
     driver: cloudstor:aws
     external: false
-    
+
+networks:
+
+  registry:
+    external: true
