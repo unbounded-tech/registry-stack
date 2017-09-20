@@ -13,6 +13,7 @@ services:
         - com.df.notify=true
         - com.df.distribute=true
         - com.df.serviceDomain=${REGISTRY_DOMAIN:-localhost}
+        - com.df.srcPort=5000
         - com.df.port=5000
         - com.df.reqMode=tcp
         - com.df.xForwardedProto=true
