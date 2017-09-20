@@ -3,7 +3,7 @@ version: '3.2'
 services:
 
   main:
-    image: registry
+    image: registry:2
     volumes:
       - registry:/var/lib/registry
     networks:
@@ -14,6 +14,7 @@ services:
         - com.df.distribute=true
         - com.df.serviceDomain=${REGISTRY_DOMAIN:-localhost}
         - com.df.port=5000
+        - com.df.reqMode=tcp
         - com.df.letsencrypt.host=${REGISTRY_DOMAIN:-localhost}
         - com.df.letsencrypt.email=pat@patscott.io
       resources:
