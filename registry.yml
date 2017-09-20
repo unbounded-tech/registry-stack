@@ -6,20 +6,11 @@ services:
     image: registry:2
     ports:
       - 5000:5000
-    environment:
-      - REGISTRY_HTTP_TLS_CERTIFICATE=/etc/letsencrypt/registry.imakethingsfortheinternet.com.crt
-      - REGISTRY_HTTP_TLS_KEY=/etc/letsencrypt/registry.imakethingsfortheinternet.com.key
     volumes:
       - registry:/var/lib/registry
-      - le-certs:/etc/letsencrypt
     networks:
       - registry
     deploy:
-      labels:
-        - com.df.notify=true
-        - com.df.distribute=true
-        - com.df.letsencrypt.host=${REGISTRY_DOMAIN:-localhost}
-        - com.df.letsencrypt.email=pat@patscott.io
       resources:
         reservations:
           memory: 100M
@@ -31,9 +22,6 @@ volumes:
   registry:
     driver: cloudstor:aws
     external: false
-
-  le-certs:
-    external: true
 
 networks:
 
