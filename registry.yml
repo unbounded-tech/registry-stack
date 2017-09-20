@@ -4,13 +4,18 @@ services:
 
   main:
     image: registry
-    ports:
-      - 5000:5000
     volumes:
       - registry:/var/lib/registry
     networks:
       - registry
     deploy:
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.serviceDomain=${REGISTRY_DOMAIN:-localhost}
+        - com.df.port=5000
+        - com.df.letsencrypt.host=${REGISTRY_DOMAIN:-localhost}
+        - com.df.letsencrypt.email=pat@patscott.io
       resources:
         reservations:
           memory: 100M

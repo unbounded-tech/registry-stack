@@ -24,7 +24,7 @@ pipeline {
         branch "master"
       }
       environment {
-        MONITOR_DOMAIN = 'monitor.imakethingsfortheinternet.com'
+        REGISTRY_DOMAIN = 'registry.imakethingsfortheinternet.com'
       }
       steps {
         sh "docker stack deploy -c registry.yml registry"
