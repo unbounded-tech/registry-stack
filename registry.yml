@@ -9,8 +9,17 @@ services:
     volumes:
       - registry:/var/lib/registry
     networks:
+      - proxy
       - registry
     deploy:
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.port=5000
+        - com.df.serviceDomain=${REGISTRY_DOMAIN}
+        - com.df.xForwardedProto=true
+        - com.df.letsencrypt.host=${REGISTRY_DOMAIN}
+        - com.df.letsencrypt.email=pat@patscott.io
       resources:
         reservations:
           memory: 100M
@@ -22,6 +31,10 @@ volumes:
   registry:
     driver: cloudstor:aws
     external: false
+
+  le-certs:
+    driver: cloudstor:aws
+    external: true
 
 networks:
 
