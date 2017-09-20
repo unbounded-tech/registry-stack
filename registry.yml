@@ -33,7 +33,6 @@ volumes:
     external: false
 
   le-certs:
-    driver: cloudstor:aws
     external: true
 
 networks:
