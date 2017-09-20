@@ -34,5 +34,8 @@ volumes:
 
 networks:
 
+  proxy:
+    external: true
+
   registry:
     external: true
