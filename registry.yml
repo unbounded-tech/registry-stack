@@ -19,7 +19,6 @@ services:
         - com.df.serviceDomain=${REGISTRY_DOMAIN}
         - com.df.xForwardedProto=true
         - com.df.letsencrypt.host=${REGISTRY_DOMAIN}
-        - com.df.letsencrypt.email=pat@patscott.io
       resources:
         reservations:
           memory: 100M
